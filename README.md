@@ -44,6 +44,12 @@ Sie ist optional: ohne sie entstehen die Gruppen aus den IDs mit Standardfarben.
 
 Leere Blöcke stehen nicht in der CSV.
 
+## Rechtliches und Datenschutz
+
+In der Fußzeile der Seite stehen Impressum (angelehnt an [lippesola.de](https://www.lippesola.de/sola/kontakt/impressum/)), Datenschutzerklärung und ein Link zum Quelltext.
+Die Daten bleiben lokal im Browser (Arbeitsstand, Spaltenkonfiguration und Design liegen im `localStorage`), es gibt keine Cookies und kein Tracking.
+Quelltext: [github.com/lippesola/einteilung](https://github.com/lippesola/einteilung)
+
 ## Entwicklung
 
 ```sh
