@@ -1,0 +1,23 @@
+{
+  "name": "einteilung",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Lokale Gruppeneinteilung für Teilnehmer und Mitarbeiter (CSV-basiert, ohne Backend)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node test/roundtrip.test.mjs && node test/autosort.test.mjs"
+  },
+  "dependencies": {
+    "@lucide/vue": "^1.70.0",
+    "papaparse": "^5.7.0",
+    "vue": "^3.5.45",
+    "vue-draggable-plus": "^0.6.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.10",
+    "vite": "^8.3.6"
+  }
+}

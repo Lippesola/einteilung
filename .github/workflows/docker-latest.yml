@@ -1,0 +1,37 @@
+name: Build Docker Image
+
+on:
+  push:
+    branches: [ "main" ]
+
+# Only the newest commit on main matters.
+concurrency:
+  group: docker-latest
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+
+  build_and_publish_image:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 24
+        cache: npm
+    - name: Run tests
+      run: npm ci && npm test
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag ghcr.io/lippesola/einteilung:latest --tag ghcr.io/lippesola/einteilung:${GITHUB_SHA::7}
+    - name: Login to ghcr.io
+      run: echo $GITHUB_TOKEN | docker login ghcr.io -u lippesola --password-stdin
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+    - name: Push the Docker image
+      run: docker push --all-tags ghcr.io/lippesola/einteilung
